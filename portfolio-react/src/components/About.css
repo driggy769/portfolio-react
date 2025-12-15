@@ -1,0 +1,153 @@
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-section {
+  position: relative;
+  padding: 120px 8%;
+  background: #1d1d1d;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* animated background */
+.about-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #0c0c0c, #281629, #100b11);
+  background-size: 400% 400%;
+  animation: gradientMove 8s ease infinite;
+  z-index: 0;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.about-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.about-inner h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin-bottom: 32px;
+}
+
+.about-inner p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 20px;
+  transition-delay: var(--delay, 0s);
+}
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================
+   CLIENTS
+========================= */
+
+.clients-heading {
+  margin-top: 64px;
+  margin-bottom: 32px;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.client {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client img {
+  max-width: 100%;
+  height: 100px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.4;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.height-adj {
+  height: 150px;
+}
+
+.client:hover {
+  transform: translateY(-4px);
+}
+
+.client:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+.clientLogo {
+  filter: invert(1) !important;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .clients-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .about-section {
+    padding: 40px 5%;
+  }
+
+  .about-inner p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .about-inner h2 {
+    text-align: center;
+  }
+
+  .clients-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .clients-heading {
+    text-align: center;
+  }
+
+  .client img {
+    height: 110px;
+  }
+}

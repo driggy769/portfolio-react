@@ -1,0 +1,154 @@
+:root {
+  --reveal: 50%;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  height: 100vh;
+  background: #000;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.hero.is-visible {
+  opacity: 1;
+}
+
+/* 🔴 IMPORTANT: 1px bleed to prevent seam */
+.layers,
+.layer,
+.color {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+}
+
+/* CLIPPED LAYERS */
+.layers {
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* BACKGROUND COLOR */
+.color {
+  background: #fff;
+  z-index: 0;
+}
+
+/* IMAGE LAYERS */
+.layer {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% auto;
+  will-change: clip-path;
+  z-index: 1;
+}
+
+/* LEFT IMAGE */
+.layer.base {
+  background-image: url("/images/1.png");
+  clip-path: inset(0 calc(100% - var(--reveal)) 0 0);
+}
+
+/* RIGHT IMAGE */
+.layer.reveal-image {
+  background-image: url("/images/2.png");
+  clip-path: inset(0 0 0 clamp(0%, var(--reveal), 100%));
+}
+
+/* TITLES */
+.title {
+  position: absolute;
+  top: 48%;
+  transform: translateY(-50%);
+  font-size: clamp(3rem, 6vw, 6rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #fff;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.25s ease;
+}
+
+.title.left {
+  left: 8%;
+  font-family: "Poppins", sans-serif;
+}
+
+.title.right {
+  right: 8%;
+  font-family: "Source Code Pro", monospace;
+}
+
+/* SUBTITLES */
+.subtitle {
+  margin-top: 0.75rem;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  max-width: 35ch;
+  opacity: 0.75;
+}
+
+/* MOBILE IMAGE */
+.mobile-image {
+  display: none;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .layers {
+    display: none;
+  }
+
+  .hero {
+    background: #fff;
+    height: auto;
+  }
+
+  .mobile-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-image: url("/images/mobile.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .mobile-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0) 40%
+    );
+  }
+
+  .subtitle {
+    display: none;
+  }
+
+  .title {
+    bottom: 7.25rem;
+    top: auto;
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
+    opacity: 1 !important;
+  }
+
+  .title.left {
+    left: 1.25rem;
+  }
+
+  .title.right {
+    right: 1.25rem;
+    text-align: right;
+    opacity: 0.85;
+  }
+}
