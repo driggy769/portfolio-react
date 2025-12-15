@@ -1,0 +1,104 @@
+/* =========================
+   CONTACT SECTION
+========================= */
+
+.contact-section {
+  padding: 120px 8%;
+  background: #130214;
+  color: #fff;
+}
+
+.contact-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-intro {
+  margin-bottom: 48px;
+  opacity: 0.85;
+  line-height: 1.7;
+}
+
+.contact-inner h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  margin-bottom: 24px;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.contact-form {
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.form-field label {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.form-field input,
+.form-field textarea {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  padding: 12px 14px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  outline: none;
+  border-color: #a40c75;
+}
+
+/* =========================
+   SUBMIT BUTTON
+========================= */
+
+.contact-submit {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+}
+
+/* accent underline */
+.contact-submit::after {
+  content: "";
+  display: block;
+  margin-top: 6px;
+  height: 3px;
+  width: 100%;
+  background: linear-gradient(90deg, #fcd702, #dc2f4f, #a40c75);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.contact-submit:hover::after,
+.contact-submit:focus-visible::after {
+  transform: scaleX(1);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 5%;
+  }
+}

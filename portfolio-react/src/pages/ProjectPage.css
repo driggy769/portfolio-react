@@ -1,0 +1,297 @@
+/* =========================
+   PROJECT PAGE BASE
+========================= */
+
+.project-page {
+  position: relative;
+  min-height: 100vh;
+  background: #0b0b0f;
+  color: #fff;
+  overflow: hidden; /* stops nebula overflow + double scrollbar */
+}
+
+/* =========================
+   NEBULA BACKGROUND
+========================= */
+
+.project-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background: radial-gradient(
+      600px 600px at 20% 30%,
+      rgba(164, 12, 117, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      500px 500px at 80% 40%,
+      rgba(220, 47, 79, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 700px at 50% 80%,
+      rgba(59, 130, 246, 0.18),
+      transparent 65%
+    );
+
+  filter: blur(40px);
+  animation: nebulaDrift 20s ease-in-out infinite;
+}
+
+.project-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background: radial-gradient(
+      1.2px 1.2px at 20% 30%,
+      rgba(255, 255, 255, 0.7),
+      transparent
+    ),
+    radial-gradient(
+      1.2px 1.2px at 80% 40%,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    ),
+    radial-gradient(
+      1.4px 1.4px at 10% 80%,
+      rgba(255, 255, 255, 0.8),
+      transparent
+    ),
+    radial-gradient(2px 2px at 90% 10%, rgba(255, 255, 255, 0.9), transparent);
+
+  background-size: 200px 200px;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+@keyframes nebulaDrift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-2%, 2%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* =========================
+   PROJECT HERO
+========================= */
+
+.project-hero {
+  position: relative;
+  height: 60vh;
+  min-height: 360px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.project-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* overlay */
+.project-hero-overlay {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+
+  padding: 64px 0 80px;
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75),
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+.project-hero-inner {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 8%;
+}
+
+.project-hero-inner h1 {
+  margin: 0;
+  text-align: left;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+
+/* =========================
+   PROJECT CONTENT
+========================= */
+
+.project-content {
+  position: relative;
+  z-index: 2;
+
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 8% 120px;
+}
+
+.project-text {
+  margin-bottom: 96px;
+}
+
+.project-text h2 {
+  margin-bottom: 24px;
+}
+
+.project-text p {
+  margin-bottom: 20px;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+/* =========================
+   CAROUSEL (HARD OVERRIDES)
+   This section is written to WIN against any older card/grid CSS.
+========================= */
+
+.project-page .project-carousel {
+  width: 100%;
+}
+
+/* force carousel container NOT to be grid/flex from other styles */
+.project-page .carousel {
+  position: relative;
+  width: 100%;
+  display: block !important;
+  overflow: hidden; /* additional safety clip */
+}
+
+/* viewport: the ONLY visible window */
+.project-page .carousel-viewport {
+  width: 100%;
+  overflow: hidden !important;
+  display: block !important;
+}
+
+/* track: row that moves */
+.project-page .carousel-track {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  gap: 0 !important;
+  width: 100% !important;
+  will-change: transform;
+  transition: transform 0.5s ease;
+}
+
+/* slide: MUST be full width, never shrink */
+.project-page .carousel-slide {
+  flex: 0 0 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  width: 100% !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+  background: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* image: MUST fill slide, ignore any max-width rules */
+.project-page .carousel-slide img {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: auto !important;
+  border-radius: 12px;
+}
+
+/* buttons */
+.project-page .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 2rem;
+}
+
+.project-page .carousel-btn.prev {
+  left: 12px;
+}
+.project-page .carousel-btn.next {
+  right: 12px;
+}
+
+.carousel-counter {
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* =========================
+   FADE CAROUSEL
+========================= */
+
+.fade-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.fade-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.fade-slide.active {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .project-hero {
+    height: 50vh;
+  }
+
+  .project-content {
+    padding: 64px 5% 96px;
+  }
+}

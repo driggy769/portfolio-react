@@ -8,6 +8,11 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  background: #000;
+}
+
 /* CRITICAL:
    Do NOT lock the document height.
    Let the page grow naturally. */
