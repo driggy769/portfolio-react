@@ -26,7 +26,6 @@ function Home() {
       <Work />
       <Blog />
       <Contact />
-      <Footer />
     </>
   );
 }
