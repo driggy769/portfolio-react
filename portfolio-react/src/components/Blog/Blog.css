@@ -1,0 +1,168 @@
+/* =====================================================
+   BLOG SECTION — SELF CONTAINED + SCOPED (NO DEPENDENCIES)
+   ===================================================== */
+
+#blog.blog-section {
+  padding: 120px 8%;
+  position: relative;
+}
+
+#blog.blog-section .blog-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header */
+#blog.blog-section .blog-heading {
+  font-size: 2.75rem;
+  font-weight: 600;
+  margin: 0 0 1rem;
+  color: #fff;
+
+  /* reveal system cannot hide it */
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+#blog.blog-section .blog-intro {
+  max-width: 680px;
+  margin: 0 0 3.5rem;
+  color: #cfcfcf;
+  line-height: 1.6;
+}
+
+/* Grid */
+#blog.blog-section .blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 2.5rem;
+}
+
+/* Link */
+#blog.blog-section .blog-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Card */
+#blog.blog-section .blog-card {
+  position: relative;
+  border-radius: 20px;
+  background: #111;
+  overflow: hidden; /* keeps image clean */
+  transform: translateZ(0);
+  transition: transform 0.35s ease;
+}
+
+/* Lift */
+#blog.blog-section .blog-link:hover .blog-card {
+  transform: translateY(-8px);
+}
+
+/* Accent border (NOT clipped) */
+#blog.blog-section .blog-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 22px 48px rgba(0, 0, 0, 0.55);
+}
+
+#blog.blog-section .blog-link:hover .blog-card::before {
+  opacity: 1;
+}
+
+/* Image */
+#blog.blog-section .blog-thumb {
+  height: 260px;
+}
+
+#blog.blog-section .blog-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content */
+#blog.blog-section .blog-content {
+  padding: 1.75rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+#blog.blog-section .blog-content h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+#blog.blog-section .blog-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #b3b3b3;
+}
+
+#blog.blog-section .blog-cta {
+  /* margin-top: 0.75rem; */
+  font-size: 0.85rem;
+  font-weight: 500;
+  /* opacity: 0.85; */
+  color: white;
+}
+/* Mobile */
+@media (max-width: 600px) {
+  #blog.blog-section {
+    padding: 5rem 0;
+  }
+
+  #blog.blog-section .blog-heading {
+    font-size: 2.1rem;
+  }
+
+  #blog.blog-section .blog-thumb {
+    height: 220px;
+  }
+}
+
+/* =========================================
+   BLOG CARD ACCENT BORDER (WORK-STYLE)
+   ========================================= */
+
+/* Ensure positioning */
+#blog.blog-section .blog-card {
+  position: relative;
+}
+
+/* Accent border */
+#blog.blog-section .blog-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+
+  padding: 3px;
+  background: linear-gradient(90deg, #fcd702, #dc2f4f, #a40c75);
+
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* Show border on hover */
+#blog.blog-section .blog-link:hover .blog-card::after {
+  opacity: 1;
+}

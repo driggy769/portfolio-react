@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function useReveal() {
+export default function useReveal(dep) {
   useEffect(() => {
     const reveals = document.querySelectorAll(".reveal");
 
@@ -16,8 +16,12 @@ export default function useReveal() {
       { threshold: 0.2 }
     );
 
-    reveals.forEach((el) => observer.observe(el));
+    reveals.forEach((el) => {
+      if (!el.classList.contains("active")) {
+        observer.observe(el);
+      }
+    });
 
     return () => observer.disconnect();
-  }, []);
+  }, [dep]);
 }

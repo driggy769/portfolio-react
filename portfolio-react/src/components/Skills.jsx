@@ -158,7 +158,7 @@ function Skills() {
         <div className="skills-group skills-fun reveal">
           <h3 className="skills-title">Fun</h3>
 
-          <div className="skill" data-level="95">
+          <div className="skill" data-level="100">
             <span className="skill-name">Spending time with my dog</span>
             <div className="skill-bar">
               <div className="skill-fill"></div>

@@ -9,7 +9,11 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import Work from "./components/Work";
 import ProjectPage from "./pages/ProjectPage";
+import Blog from "./components/Blog/Blog";
+import BlogPostPage from "./pages/BlogPostPage";
+
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 function Home() {
   useReveal();
@@ -20,7 +24,9 @@ function Home() {
       <About />
       <Skills />
       <Work />
+      <Blog />
       <Contact />
+      <Footer />
     </>
   );
 }
@@ -34,6 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/work/:slug" element={<ProjectPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
       </Routes>
     </>
   );

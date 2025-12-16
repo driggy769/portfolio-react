@@ -1,0 +1,166 @@
+/* =========================
+   PAGE WRAPPER
+========================= */
+
+.blogpost-page {
+  background: #000;
+  color: #fff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.blogpost-hero {
+  position: relative;
+  height: 70vh;
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.blogpost-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blogpost-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.85)
+  );
+  display: flex;
+  align-items: flex-end;
+}
+
+.blogpost-hero-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.blogpost-hero-inner h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.blogpost-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.blogpost-text h2 {
+  margin: 4rem 0 1rem;
+  font-size: 2rem;
+}
+
+.blogpost-text h3 {
+  margin: 3rem 0 1rem;
+  font-size: 1.5rem;
+}
+
+.blogpost-text p {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* =========================
+   RELATED POSTS
+========================= */
+
+.blogpost-related {
+  margin-top: 6rem;
+}
+
+.blogpost-related h2 {
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* Grid */
+.blogpost-related-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(260px, 360px));
+  gap: 2rem;
+
+  width: 100%; /* blue area = full width */
+  justify-content: start; /* items stay left-aligned */
+}
+
+.blogpost-related {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card */
+.blogpost-related-card {
+  background: #111;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+/* Lift */
+.blogpost-related-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Accent border (Work-style) */
+.blogpost-related-card::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  border: 1px solid var(--accent, #f5c542);
+}
+
+.blogpost-related-card:hover::after {
+  opacity: 1;
+}
+
+/* Image */
+.blogpost-related-thumb {
+  height: 180px;
+  overflow: hidden;
+}
+
+.blogpost-related-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content */
+.blogpost-related-content {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.blogpost-related-content h3 {
+  font-size: 1.05rem;
+  margin: 0 0 0.5rem;
+}
+
+.blogpost-related-content span {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}

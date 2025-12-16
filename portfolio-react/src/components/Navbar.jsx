@@ -5,7 +5,7 @@ import "./Navbar.css";
 /* =========================
    NAV SECTIONS
 ========================= */
-const SECTIONS = ["hero", "about", "skills", "work", "contact"];
+const SECTIONS = ["hero", "about", "skills", "work", "blog", "contact"];
 
 /* =========================
    ROUTE → NAV MAP
@@ -121,6 +121,16 @@ function Navbar() {
             onClick={closeMenu}
           >
             Work
+          </a>
+        </li>
+
+        <li>
+          <a
+            href={navHref("blog")}
+            className={active === "blog" ? "active" : ""}
+            onClick={closeMenu}
+          >
+            Blog
           </a>
         </li>
 
