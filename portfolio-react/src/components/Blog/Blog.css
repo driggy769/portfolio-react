@@ -1,6 +1,6 @@
 /* =====================================================
-   BLOG SECTION — SELF CONTAINED + SCOPED (NO DEPENDENCIES)
-   ===================================================== */
+   BLOG SECTION — SELF CONTAINED + SCOPED
+===================================================== */
 
 #blog.blog-section {
   padding: 120px 8%;
@@ -12,7 +12,10 @@
   margin: 0 auto;
 }
 
-/* Header */
+/* =========================
+   HEADER
+========================= */
+
 #blog.blog-section .blog-heading {
   font-size: 2.75rem;
   font-weight: 600;
@@ -31,53 +34,75 @@
   line-height: 1.6;
 }
 
-/* Grid */
+/* =========================
+   GRID
+========================= */
+
 #blog.blog-section .blog-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2.5rem;
 }
 
-/* Link */
+/* =========================
+   LINK WRAPPER
+========================= */
+
 #blog.blog-section .blog-link {
   display: block;
   text-decoration: none;
   color: inherit;
 }
 
-/* Card */
+/* =========================
+   CARD
+========================= */
+
 #blog.blog-section .blog-card {
   position: relative;
   border-radius: 20px;
   background: #111;
-  overflow: hidden; /* keeps image clean */
+  overflow: hidden;
   transform: translateZ(0);
   transition: transform 0.35s ease;
 }
 
-/* Lift */
+/* Lift on hover (desktop only) */
 #blog.blog-section .blog-link:hover .blog-card {
   transform: translateY(-8px);
 }
 
-/* Accent border (NOT clipped) */
+/* =========================
+   GRADIENT BORDER (WORK-STYLE)
+========================= */
+
 #blog.blog-section .blog-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: 20px;
-  pointer-events: none;
+  padding: 2px; /* border thickness */
+  border-radius: inherit;
+  background: linear-gradient(90deg, #ffcc00, #e91e63, #9c27b0);
   opacity: 0;
   transition: opacity 0.35s ease;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18),
-    0 22px 48px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+  z-index: 3;
+
+  /* mask so only the border shows */
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
 }
 
+/* Show border on hover (desktop) */
 #blog.blog-section .blog-link:hover .blog-card::before {
   opacity: 1;
 }
 
-/* Image */
+/* =========================
+   IMAGE
+========================= */
+
 #blog.blog-section .blog-thumb {
   height: 260px;
 }
@@ -89,7 +114,10 @@
   display: block;
 }
 
-/* Content */
+/* =========================
+   CONTENT
+========================= */
+
 #blog.blog-section .blog-content {
   padding: 1.75rem 2rem 2rem;
   display: flex;
@@ -112,53 +140,39 @@
 }
 
 #blog.blog-section .blog-cta {
-  /* margin-top: 0.75rem; */
   font-size: 0.85rem;
   font-weight: 500;
-  /* opacity: 0.85; */
-  color: white;
+  color: #fff;
 }
-/* Mobile */
-@media (max-width: 600px) {
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
   #blog.blog-section {
-    padding: 5rem 0;
+    padding: 80px 5%;
   }
 
   #blog.blog-section .blog-heading {
     font-size: 2.1rem;
   }
 
+  #blog.blog-section .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
   #blog.blog-section .blog-thumb {
     height: 220px;
   }
-}
 
-/* =========================================
-   BLOG CARD ACCENT BORDER (WORK-STYLE)
-   ========================================= */
+  /* Always show border on mobile */
+  #blog.blog-section .blog-card::before {
+    opacity: 1;
+  }
 
-/* Ensure positioning */
-#blog.blog-section .blog-card {
-  position: relative;
-}
-#blog.blog-section .blog-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 2px; /* border thickness */
-  border-radius: inherit;
-  background: linear-gradient(90deg, #ffcc00, #e91e63, #9c27b0);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-
-  /* mask so only the border shows */
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-/* Show border on hover */
-#blog.blog-section .blog-link:hover .blog-card::after {
-  opacity: 1;
+  /* Disable lift on mobile */
+  #blog.blog-section .blog-link:hover .blog-card {
+    transform: none;
+  }
 }

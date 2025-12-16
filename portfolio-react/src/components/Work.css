@@ -218,3 +218,39 @@
     margin-bottom: 64px;
   }
 }
+
+@media (max-width: 600px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .work-section {
+    padding: 80px 5%;
+  }
+
+  .work-intro {
+    margin-bottom: 64px;
+  }
+
+  /* =========================
+     MOBILE: ALWAYS VISIBLE
+  ========================= */
+
+  .work-dark {
+    opacity: 1;
+  }
+
+  .work-overlay {
+    opacity: 1;
+    transform: none;
+  }
+
+  .work-item::before {
+    opacity: 1;
+  }
+
+  /* Optional: disable image zoom on mobile */
+  .work-item img {
+    transform: none;
+  }
+}

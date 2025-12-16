@@ -304,6 +304,13 @@
   }
 
   .project-content {
-    padding: 64px 5% 96px;
+    padding: 0px 5% 96px;
+  }
+  .project-hero-inner {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 5%;
+    z-index: 99;
   }
 }
