@@ -42,6 +42,8 @@ function App() {
         <Route path="/work/:slug" element={<ProjectPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
       </Routes>
+
+      <Footer />
     </>
   );
 }

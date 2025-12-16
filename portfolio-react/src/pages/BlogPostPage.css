@@ -1,12 +1,97 @@
 /* =========================
    PAGE WRAPPER
 ========================= */
+/* =========================
+   PROJECT PAGE BASE
+========================= */
 
 .blogpost-page {
-  background: #000;
+  position: relative;
+  min-height: 100vh;
+  background: #0b0b0f;
   color: #fff;
+  overflow: hidden; /* stops nebula overflow + double scrollbar */
 }
 
+/* =========================
+   NEBULA BACKGROUND
+========================= */
+
+.blogpost-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  background: radial-gradient(
+      600px 600px at 20% 30%,
+      rgba(164, 12, 117, 0.25),
+      transparent 60%
+    ),
+    radial-gradient(
+      500px 500px at 80% 40%,
+      rgba(220, 47, 79, 0.22),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 700px at 50% 80%,
+      rgba(59, 130, 246, 0.18),
+      transparent 65%
+    );
+
+  filter: blur(40px);
+  animation: nebulaDrift 20s ease-in-out infinite;
+}
+
+.blogpost-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+
+  background: radial-gradient(
+      1.2px 1.2px at 20% 30%,
+      rgba(255, 255, 255, 0.7),
+      transparent
+    ),
+    radial-gradient(
+      1.2px 1.2px at 80% 40%,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    ),
+    radial-gradient(
+      1.4px 1.4px at 10% 80%,
+      rgba(255, 255, 255, 0.8),
+      transparent
+    ),
+    radial-gradient(2px 2px at 90% 10%, rgba(255, 255, 255, 0.9), transparent);
+
+  background-size: 200px 200px;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+@keyframes nebulaDrift {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-2%, 2%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
 /* =========================
    HERO
 ========================= */
@@ -16,6 +101,8 @@
   height: 70vh;
   min-height: 420px;
   overflow: hidden;
+  z-index: 99;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), 0 80px 120px rgba(0, 0, 0, 1);
 }
 
 .blogpost-hero img {
@@ -55,7 +142,9 @@
 .blogpost-content {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 6rem 2rem;
+  position: relative;
+  padding: 0rem 2rem;
+  z-index: 99;
 }
 
 /* =========================
@@ -94,7 +183,7 @@
 /* Grid */
 .blogpost-related-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(260px, 360px));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
 
   width: 100%; /* blue area = full width */
