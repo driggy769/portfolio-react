@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./contact.css";
+import "./Contact.css";
 
 function Contact() {
   const [status, setStatus] = useState("idle"); // idle | sending | success | error

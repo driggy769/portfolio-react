@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { client, urlFor } from "../../lib/sanity";
-import "./blog.css";
+import "./Blog.css";
 
 const POSTS_QUERY = `*[_type == "blogPost"] | order(publishedAt desc){
   _id,
