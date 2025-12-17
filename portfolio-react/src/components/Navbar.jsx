@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 /* =========================
@@ -9,12 +9,11 @@ const SECTIONS = ["hero", "about", "skills", "work", "blog", "contact"];
 
 /* =========================
    ROUTE → NAV MAP
-   (extend this later safely)
 ========================= */
 const ROUTE_MAP = [
-  { match: /^\/$/, active: null }, // Home (scroll-spy handles this)
-  { match: /^\/work\/.+/, active: "work" }, // Project pages
-  { match: /^\/blog/, active: "blog" }, // Future example
+  { match: /^\/$/, active: null },
+  { match: /^\/work\/.+/, active: "work" },
+  { match: /^\/blog/, active: "blog" },
 ];
 
 function Navbar() {
@@ -22,9 +21,28 @@ function Navbar() {
   const [active, setActive] = useState(null);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const isHome = location.pathname === "/";
 
-  const navHref = (id) => (isHome ? `#${id}` : `/#${id}`);
+  /* =========================
+     SCROLL HANDLER (NO HASH)
+  ========================= */
+  const scrollToSection = (id) => {
+    closeMenu();
+
+    if (isHome) {
+      const el = document.getElementById(id);
+      el?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/", { replace: false });
+
+      // wait for home to mount
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        el?.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  };
 
   /* =========================
      MOBILE MENU
@@ -34,7 +52,6 @@ function Navbar() {
 
   /* =========================
      ROUTE-BASED ACTIVE STATE
-     (FUTURE-PROOF)
   ========================= */
   useEffect(() => {
     if (isHome) return;
@@ -70,79 +87,33 @@ function Navbar() {
     );
 
     sections.forEach((section) => observer.observe(section));
-
     return () => observer.disconnect();
   }, [isHome]);
 
   return (
     <nav className="navbar">
       {/* LOGO */}
-      <a href={navHref("hero")} className="logo" onClick={closeMenu}>
+      <button
+        className="logo"
+        onClick={() => scrollToSection("hero")}
+        aria-label="Go to top"
+      >
         <img src="/images/logo.png" className="logo-default" alt="" />
         <img src="/images/logo-hover.png" className="logo-hover" alt="" />
-      </a>
+      </button>
 
       {/* LINKS */}
       <ul className={`nav-links ${open ? "active" : ""}`}>
-        <li>
-          <a
-            href={navHref("hero")}
-            className={active === "hero" ? "active" : ""}
-            onClick={closeMenu}
-          >
-            Home
-          </a>
-        </li>
-
-        <li>
-          <a
-            href={navHref("about")}
-            className={active === "about" ? "active" : ""}
-            onClick={closeMenu}
-          >
-            About
-          </a>
-        </li>
-
-        <li>
-          <a
-            href={navHref("skills")}
-            className={active === "skills" ? "active" : ""}
-            onClick={closeMenu}
-          >
-            Skills
-          </a>
-        </li>
-
-        <li>
-          <a
-            href={navHref("work")}
-            className={active === "work" ? "active" : ""}
-            onClick={closeMenu}
-          >
-            Work
-          </a>
-        </li>
-
-        <li>
-          <a
-            href={navHref("blog")}
-            className={active === "blog" ? "active" : ""}
-            onClick={closeMenu}
-          >
-            Blog
-          </a>
-        </li>
-
-        <li>
-          <a
-            href={navHref("contact")}
-            className={active === "contact" ? "active" : ""}
-            onClick={closeMenu}
-          >
-            Contact
-          </a>
-        </li>
+        {SECTIONS.map((id) => (
+          <li key={id}>
+            <button
+              className={active === id ? "active" : ""}
+              onClick={() => scrollToSection(id)}
+            >
+              {id.charAt(0).toUpperCase() + id.slice(1)}
+            </button>
+          </li>
+        ))}
       </ul>
 
       {/* HAMBURGER */}

@@ -281,4 +281,69 @@ export const projects = [
       },
     ],
   },
+
+  {
+    slug: "pearsteens-steak-house",
+    title: "Pearsteen's Steak House",
+    category: "self",
+    thumb: "/images/work/portfolio-4.png",
+    intro: "A website for a fictional local steakhouse.",
+    imageClass: "left-pos",
+    heroImage: "/images/work/portfolio-4.png",
+    gallery: [
+      "/images/work/project4/1.png",
+      "/images/work/project4/2.png",
+      "/images/work/project4/3.png",
+    ],
+    content: [
+      {
+        type: "heading",
+        text: "Project Overview",
+      },
+      {
+        type: "paragraph",
+        text: "This project marked one of my earliest explorations into React development and served as an important learning milestone in my transition from static sites to component-based applications. It began as an exercise in understanding how React could be applied to real-world layouts and interactions.",
+      },
+      {
+        type: "paragraph",
+        text: "The initial design was sourced from a free PSD template website and was chosen specifically to challenge my ability to translate a pre-existing visual concept into a functional web application. This provided a clear design reference while allowing me to focus on the technical implementation.",
+      },
+
+      {
+        type: "heading",
+        text: "From Static Markup to React",
+      },
+      {
+        type: "paragraph",
+        text: "Development started using plain HTML and CSS to establish the layout and styling. Once the structure was in place, the project was progressively converted into a React application, breaking the interface down into reusable components and introducing a more scalable architecture.",
+      },
+      {
+        type: "paragraph",
+        text: "This staged approach helped solidify my understanding of how React differs from traditional static development and highlighted the benefits of component reuse and improved state management.",
+      },
+
+      {
+        type: "heading",
+        text: "Challenges & Learning Curve",
+      },
+      {
+        type: "paragraph",
+        text: "As this was an early React project, several aspects proved particularly challenging. One of the most significant hurdles was gaining a deeper understanding of routing and navigation, especially how different views could be handled within a single-page application.",
+      },
+      {
+        type: "paragraph",
+        text: "The project took just over two weeks to complete, reflecting both the learning curve involved and the time spent researching, testing, and refining unfamiliar concepts. Despite the challenges, this process played a key role in building confidence with React fundamentals.",
+      },
+
+      {
+        type: "heading",
+        text: "Live Demo",
+      },
+      {
+        type: "link",
+        text: "View Live Demo",
+        url: "https://restaurant-seven-iota.vercel.app/",
+      },
+    ],
+  },
 ];
