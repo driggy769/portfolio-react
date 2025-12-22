@@ -283,6 +283,47 @@ export const projects = [
   },
 
   {
+    slug: "realm-twow-ambershire",
+    title: "Realm TWOW Guild",
+    category: "self",
+    thumb: "/images/work/portfolio-7.png",
+    intro: "A guide for my Turtle WoW guild, Realm.",
+    imageClass: "left-pos",
+    heroImage: "/images/work/portfolio-7.png",
+    gallery: [
+      "/images/work/project7/1.png",
+      "/images/work/project7/2.png",
+      "/images/work/project7/3.png",
+    ],
+    content: [
+      {
+        type: "heading",
+        text: "Project Overview",
+      },
+      {
+        type: "paragraph",
+        text: "The goal of this project was to create a dedicated guild website that prospective members could explore before submitting an application. The site was designed to clearly communicate the guild’s structure, activity, and culture while acting as an entry point for new players.",
+      },
+      {
+        type: "paragraph",
+        text: "React was chosen as the primary framework, as it aligned well with my ongoing efforts to become more confident with component-based development and managing dynamic content within a modern frontend workflow.",
+      },
+      {
+        type: "paragraph",
+        text: "One of the key advantages of using React was the ability to leverage structured datasets to build a fully custom raid team section. This allowed for a clean separation between EU and NA raid teams while keeping the layout flexible and easy to extend.",
+      },
+      {
+        type: "paragraph",
+        text: "Looking ahead, I would like to connect the site to a headless CMS, enabling guild leadership to update raid team compositions without requiring direct code changes. This would significantly improve long-term maintainability and usability.",
+      },
+      {
+        type: "paragraph",
+        text: "Future plans also include the addition of a news section to share guild announcements, updates, and events, helping to keep both members and applicants informed and engaged.",
+      },
+    ],
+  },
+
+  {
     slug: "pearsteens-steak-house",
     title: "Pearsteen's Steak House",
     category: "self",
