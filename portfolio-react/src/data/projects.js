@@ -282,13 +282,13 @@ export const projects = [
     ],
   },
 
-  {
+   {
     slug: "realm-twow-ambershire",
     title: "Realm TWOW Guild",
     category: "self",
     thumb: "/images/work/portfolio-7.png",
     intro: "A guide for my Turtle WoW guild, Realm.",
-    imageClass: "left-pos",
+    imageClass: "top-pos",
     heroImage: "/images/work/portfolio-7.png",
     gallery: [
       "/images/work/project7/1.png",
@@ -320,8 +320,6 @@ export const projects = [
         type: "paragraph",
         text: "Future plans also include the addition of a news section to share guild announcements, updates, and events, helping to keep both members and applicants informed and engaged.",
       },
-    ],
-  },
 
   {
     slug: "pearsteens-steak-house",
