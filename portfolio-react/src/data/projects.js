@@ -11,6 +11,7 @@ export const projects = [
     intro: "SCAN email marketing campaign. Designed and coded by me.",
     imageClass: "", // optional (pos-top, left-pos)
     heroImage: "/images/work/portfolio-1.png",
+    liveDemo: "https://www.scan.co.uk/scanshot",
     gallery: [
       "/images/work/project1/1.png",
       "/images/work/project1/2.png",
@@ -110,6 +111,7 @@ export const projects = [
     intro: "Sponsored content for brands such as NVIDIA and AMD, for SCAN.",
     imageClass: "", // optional (pos-top, left-pos)
     heroImage: "/images/work/portfolio-2.png",
+    liveDemo: "https://www.scan.co.uk/shops/asus/evangelion-02",
     gallery: [
       "/images/work/project2/1.png",
       "/images/work/project2/2.png",
@@ -200,6 +202,7 @@ export const projects = [
     intro: "Landing pages designed and built for the 3XS Custom Department.",
     imageClass: "", // optional (pos-top, left-pos)
     heroImage: "/images/work/portfolio-3.png",
+    liveDemo: "https://www.scan.co.uk/3xs/custom/pages/custom-shop",
 
     gallery: [
       "/images/work/project3/1.png",
