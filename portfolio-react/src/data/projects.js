@@ -287,10 +287,10 @@ export const projects = [
     slug: "realm-twow-ambershire",
     title: "Realm TWOW Guild",
     category: "self",
-    thumb: "/images/work/portfolio-7.png",
+    thumb: "/images/work/project7/hero.png",
     intro: "A guide for my Turtle WoW guild, Realm.",
     imageClass: "left-pos",
-    heroImage: "/images/work/portfolio-7.png",
+    heroImage: "/images/work/project7/hero.png",
     liveDemo: "https://realm-twow.netlify.app/",
     gallery: [
       "/images/work/project7/1.png",

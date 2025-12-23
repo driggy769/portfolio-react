@@ -3,9 +3,16 @@ import { useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 /* =========================
-   NAV SECTIONS
+   NAV SECTIONS (ID + LABEL)
 ========================= */
-const SECTIONS = ["hero", "about", "skills", "work", "blog", "contact"];
+const SECTIONS = [
+  { id: "hero", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "skills", label: "Skills" },
+  { id: "work", label: "Work" },
+  { id: "blog", label: "Blog" },
+  { id: "contact", label: "Contact" },
+];
 
 /* =========================
    ROUTE → NAV MAP
@@ -25,7 +32,7 @@ function Navbar() {
   const isHome = location.pathname === "/";
 
   /* =========================
-     SCROLL HANDLER (NO HASH)
+     SCROLL HANDLER
   ========================= */
   const scrollToSection = (id) => {
     closeMenu();
@@ -54,7 +61,10 @@ function Navbar() {
      ROUTE-BASED ACTIVE STATE
   ========================= */
   useEffect(() => {
-    if (isHome) return;
+    if (isHome) {
+      setActive(null);
+      return;
+    }
 
     const route = ROUTE_MAP.find((r) => r.match.test(location.pathname));
     setActive(route?.active ?? null);
@@ -66,7 +76,7 @@ function Navbar() {
   useEffect(() => {
     if (!isHome) return;
 
-    const sections = SECTIONS.map((id) => document.getElementById(id)).filter(
+    const sections = SECTIONS.map((s) => document.getElementById(s.id)).filter(
       Boolean
     );
 
@@ -104,13 +114,13 @@ function Navbar() {
 
       {/* LINKS */}
       <ul className={`nav-links ${open ? "active" : ""}`}>
-        {SECTIONS.map((id) => (
+        {SECTIONS.map(({ id, label }) => (
           <li key={id}>
             <button
               className={active === id ? "active" : ""}
               onClick={() => scrollToSection(id)}
             >
-              {id.charAt(0).toUpperCase() + id.slice(1)}
+              {label}
             </button>
           </li>
         ))}
