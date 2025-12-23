@@ -294,6 +294,82 @@
   z-index: 1;
 }
 
+.project-live-demo {
+  margin: 4rem 0;
+  text-align: center;
+}
+
+/* BUTTON BASE */
+.live-demo-btn {
+  position: relative;
+  display: inline-block;
+  padding: 1rem 3rem;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  color: #fff;
+  background: rgba(0, 0, 0, 0.6);
+
+  border-radius: 999px;
+
+  text-decoration: none;
+  overflow: hidden;
+
+  transition: transform 0.3s ease;
+}
+
+/* GRADIENT BORDER */
+.live-demo-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 2px; /* border thickness */
+  border-radius: inherit;
+
+  background: linear-gradient(120deg, #ffcc00, #ff0066, #7a00ff, #00c8ff);
+  background-size: 300% 300%;
+
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* HOVER STATE */
+.live-demo-btn:hover::before {
+  opacity: 1;
+  animation: gradientBorder 3s ease infinite;
+}
+
+.live-demo-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* OPTIONAL: glow */
+.live-demo-btn:hover::before {
+  filter: drop-shadow(0 0 12px rgba(255, 0, 255, 0.35));
+}
+
+/* GRADIENT ANIMATION */
+@keyframes gradientBorder {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* =========================
    RESPONSIVE
 ========================= */

@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { PortableText } from "@portabletext/react";
 import { client, urlFor } from "../lib/sanity";
 import "./BlogPostPage.css";
 
@@ -19,6 +20,24 @@ const RELATED_QUERY = `*[
   "slug": slug.current,
   featuredImage
 }`;
+
+const portableTextComponents = {
+  marks: {
+    link: ({ value, children }) => {
+      const isExternal = value?.href?.startsWith("http");
+
+      return (
+        <a
+          href={value.href}
+          target={isExternal ? "_blank" : undefined}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+        >
+          {children}
+        </a>
+      );
+    },
+  },
+};
 
 function BlogPostPage() {
   const { slug } = useParams();
@@ -65,17 +84,7 @@ function BlogPostPage() {
       {/* CONTENT */}
       <main className="blogpost-content">
         <section className="blogpost-text">
-          {post.body?.map((block, i) => {
-            if (block._type === "block") {
-              const text = block.children.map((c) => c.text).join("");
-              const style = block.style || "normal";
-
-              if (style === "h2") return <h2 key={i}>{text}</h2>;
-              if (style === "h3") return <h3 key={i}>{text}</h3>;
-              return <p key={i}>{text}</p>;
-            }
-            return null;
-          })}
+          <PortableText value={post.body} components={portableTextComponents} />
         </section>
 
         {/* RELATED POSTS */}

@@ -200,6 +200,7 @@ export const projects = [
     intro: "Landing pages designed and built for the 3XS Custom Department.",
     imageClass: "", // optional (pos-top, left-pos)
     heroImage: "/images/work/portfolio-3.png",
+
     gallery: [
       "/images/work/project3/1.png",
       "/images/work/project3/2.png",
@@ -290,6 +291,7 @@ export const projects = [
     intro: "A guide for my Turtle WoW guild, Realm.",
     imageClass: "left-pos",
     heroImage: "/images/work/portfolio-7.png",
+    liveDemo: "https://realm-twow.netlify.app/",
     gallery: [
       "/images/work/project7/1.png",
       "/images/work/project7/2.png",
@@ -331,6 +333,8 @@ export const projects = [
     intro: "A website for a fictional local steakhouse.",
     imageClass: "left-pos",
     heroImage: "/images/work/portfolio-4.png",
+
+    liveDemo: "https://restaurant-seven-iota.vercel.app/",
     gallery: [
       "/images/work/project4/1.png",
       "/images/work/project4/2.png",
@@ -374,16 +378,6 @@ export const projects = [
       {
         type: "paragraph",
         text: "The project took just over two weeks to complete, reflecting both the learning curve involved and the time spent researching, testing, and refining unfamiliar concepts. Despite the challenges, this process played a key role in building confidence with React fundamentals.",
-      },
-
-      {
-        type: "heading",
-        text: "Live Demo",
-      },
-      {
-        type: "link",
-        text: "View Live Demo",
-        url: "https://restaurant-seven-iota.vercel.app/",
       },
     ],
   },

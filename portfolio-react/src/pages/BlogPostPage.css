@@ -167,6 +167,63 @@
   color: rgba(255, 255, 255, 0.85);
 }
 
+.blogpost-text a {
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+
+/* anchor + button base */
+.blogpost-text a,
+.blogpost-text button {
+  color: #fff;
+  text-decoration: none;
+  position: relative;
+  font-weight: bold;
+
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* underline base */
+.blogpost-text a::after,
+.blogpost-text button::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    #fcd702,
+    #dc2f4f,
+    #a40c75,
+    #9aa30e,
+    #211774
+  );
+  transition: width 0.3s ease;
+}
+
+/* hover + focus */
+.blogpost-text a:hover::after,
+.blogpost-text a:focus-visible::after,
+.blogpost-text button:hover::after,
+.blogpost-text button:focus-visible::after {
+  width: 100%;
+}
+
+/* active state (scroll-spy / routes) */
+.blogpost-text a.active::after,
+.blogpost-text button.active::after {
+  width: 100%;
+}
+
 /* =========================
    RELATED POSTS
 ========================= */
@@ -183,11 +240,10 @@
 /* Grid */
 .blogpost-related-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(3, minmax(260px, 1fr));
   gap: 2rem;
-
-  width: 100%; /* blue area = full width */
-  justify-content: start; /* items stay left-aligned */
+  width: 100%;
+  justify-content: start;
 }
 
 .blogpost-related {
@@ -252,4 +308,10 @@
 .blogpost-related-content span {
   font-size: 0.85rem;
   opacity: 0.75;
+}
+
+@media (max-width: 768px) {
+  .blogpost-related-grid {
+    grid-template-columns: repeat(1, minmax(260px, 1fr));
+  }
 }

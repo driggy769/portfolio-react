@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import { projects } from "../data/projects";
+import { Link } from "react-router-dom";
+
 import "./ProjectPage.css";
 
 function ProjectPage() {
@@ -94,6 +96,26 @@ function ProjectPage() {
               return null;
             })}
         </section>
+
+        {/* LIVE DEMO + BACK BUTTONS */}
+        {project.liveDemo && (
+          <section className="project-live-demo">
+            <div className="project-cta-group">
+              <a
+                href={project.liveDemo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="live-demo-btn"
+              >
+                View Live Demo
+              </a>
+
+              <Link to="/#work" className="live-demo-btn secondary">
+                Back to Projects
+              </Link>
+            </div>
+          </section>
+        )}
 
         {/* FADE CAROUSEL */}
         {total > 0 && (
